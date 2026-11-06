@@ -1,0 +1,196 @@
+{
+  "note": "Invented data for the CUNEF group project. A suggested checklist, not a legal list.",
+  "roomTypes": [
+    {
+      "id": "hall",
+      "name": "Hall",
+      "items": [
+        {
+          "id": 1,
+          "name": "Front door",
+          "hint": "Both sides, the lock and the frame"
+        },
+        {
+          "id": 2,
+          "name": "Walls",
+          "hint": "Each wall, and any mark, hole or stain up close"
+        },
+        {
+          "id": 3,
+          "name": "Floor",
+          "hint": "The whole floor, and the skirting boards"
+        },
+        {
+          "id": 4,
+          "name": "Switches and sockets",
+          "hint": "Each one, with its cover"
+        }
+      ]
+    },
+    {
+      "id": "living",
+      "name": "Living room",
+      "items": [
+        {
+          "id": 5,
+          "name": "Walls",
+          "hint": "Each wall, and any mark, hole or stain up close"
+        },
+        {
+          "id": 6,
+          "name": "Floor",
+          "hint": "The whole floor, and the skirting boards"
+        },
+        {
+          "id": 7,
+          "name": "Windows",
+          "hint": "The glass, the frame and the blinds"
+        },
+        {
+          "id": 8,
+          "name": "Radiator",
+          "hint": "The front and the valve"
+        },
+        {
+          "id": 9,
+          "name": "Sofa",
+          "hint": "The seat, the back and the arms"
+        },
+        {
+          "id": 10,
+          "name": "Ceiling light",
+          "hint": "The lamp and the ceiling around it"
+        }
+      ]
+    },
+    {
+      "id": "bedroom",
+      "name": "Bedroom",
+      "items": [
+        {
+          "id": 11,
+          "name": "Walls",
+          "hint": "Each wall, and any mark, hole or stain up close"
+        },
+        {
+          "id": 12,
+          "name": "Floor",
+          "hint": "The whole floor, and the skirting boards"
+        },
+        {
+          "id": 13,
+          "name": "Window",
+          "hint": "The glass, the frame and the blinds"
+        },
+        {
+          "id": 14,
+          "name": "Wardrobe",
+          "hint": "Open, with its doors, shelves and rail"
+        },
+        {
+          "id": 15,
+          "name": "Bed and mattress",
+          "hint": "The frame and both sides of the mattress"
+        }
+      ]
+    },
+    {
+      "id": "kitchen",
+      "name": "Kitchen",
+      "items": [
+        {
+          "id": 16,
+          "name": "Worktop",
+          "hint": "The whole length, and any burn or cut"
+        },
+        {
+          "id": 17,
+          "name": "Hob and oven",
+          "hint": "The hob, and the oven open"
+        },
+        {
+          "id": 18,
+          "name": "Fridge",
+          "hint": "Open, with its shelves and the door seal"
+        },
+        {
+          "id": 19,
+          "name": "Sink and taps",
+          "hint": "The sink, the taps and the pipes below"
+        },
+        {
+          "id": 20,
+          "name": "Cupboards",
+          "hint": "Open, with their doors and handles"
+        },
+        {
+          "id": 21,
+          "name": "Floor",
+          "hint": "The whole floor, and the skirting boards"
+        }
+      ]
+    },
+    {
+      "id": "bathroom",
+      "name": "Bathroom",
+      "items": [
+        {
+          "id": 22,
+          "name": "Toilet",
+          "hint": "The bowl, the seat and the cistern"
+        },
+        {
+          "id": 23,
+          "name": "Shower or bath",
+          "hint": "The tray or the bath, the screen and the grout"
+        },
+        {
+          "id": 24,
+          "name": "Washbasin and taps",
+          "hint": "The basin, the taps and the pipes below"
+        },
+        {
+          "id": 25,
+          "name": "Tiles",
+          "hint": "The walls and the floor, and any cracked tile up close"
+        },
+        {
+          "id": 26,
+          "name": "Mirror",
+          "hint": "The glass and its edges"
+        },
+        {
+          "id": 27,
+          "name": "Extractor fan",
+          "hint": "The grille"
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "name": "Balcony",
+      "items": [
+        {
+          "id": 28,
+          "name": "Balcony door",
+          "hint": "The glass, the frame and the lock"
+        },
+        {
+          "id": 29,
+          "name": "Railing",
+          "hint": "The whole railing, and any rust"
+        },
+        {
+          "id": 30,
+          "name": "Floor",
+          "hint": null
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "name": "Storage room",
+      "items": []
+    }
+  ]
+}

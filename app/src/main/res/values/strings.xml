@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fianzapp</string>
+    <string name="skeleton_placeholder">This is the skeleton. Your group builds the app: start with MAI_SAP_Skeleton_App5_Fianzapp.docx.</string>
+    <string name="sample_signature_hint">Sign below with your finger, or with the mouse in the emulator.</string>
+    <string name="signature_empty">Not signed yet</string>
+    <string name="signature_lines">Lines drawn: %1$d</string>
+    <string name="signature_clear">Clear</string>
+</resources>

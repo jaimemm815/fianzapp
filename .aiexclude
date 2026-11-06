@@ -1,0 +1,7 @@
+# Gemini in Android Studio does not read these files: the upload key and its passwords.
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+keystore.properties
