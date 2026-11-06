@@ -1,5 +1,7 @@
 *.iml
 .gradle
+# Android Studio settings: local to each machine, they cause merge conflicts.
+/.idea/
 /local.properties
 /.idea/caches
 /.idea/libraries
