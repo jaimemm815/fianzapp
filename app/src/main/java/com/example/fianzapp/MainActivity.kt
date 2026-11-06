@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.fianzapp.ui.FianzappNavHost
 import com.example.fianzapp.ui.theme.FianzappTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FianzappTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SkeletonScreen(modifier = Modifier.padding(innerPadding))
+                    FianzappNavHost(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

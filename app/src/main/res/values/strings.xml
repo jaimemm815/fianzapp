@@ -5,4 +5,18 @@
     <string name="signature_empty">Not signed yet</string>
     <string name="signature_lines">Lines drawn: %1$d</string>
     <string name="signature_clear">Clear</string>
+
+    <string name="home_checklist">Checklist</string>
+    <string name="home_deadline">Deposit deadline</string>
+    <string name="home_signature_demo">Signature pad (demo)</string>
+    <string name="retry">Retry</string>
+
+    <string name="checklist_error">Could not load the checklist: %1$s</string>
+    <string name="checklist_no_items">Nothing to photograph in this room.</string>
+
+    <string name="deadline_intro">Pick the day you handed back the keys.</string>
+    <string name="deadline_pick_date">Pick date</string>
+    <string name="deadline_keys_returned">Keys handed back: %1$s</string>
+    <string name="deadline_result">The deposit earns legal interest from: %1$s</string>
+    <string name="not_legal_advice">Counted as one month from date to date (art. 36.4 LAU, art. 5 Código Civil). This is not legal advice.</string>
 </resources>
