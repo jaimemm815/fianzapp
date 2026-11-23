@@ -173,3 +173,98 @@ Sí, commitea
 ### What happened
 
 pending
+
+## DV-06
+
+- **Date and time:** 2026-11-23 19:41
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-05)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+ahora mismo la pp no carga, se queda el modulador en una pantalla de inicio con el logotipo de android
+```
+
+### What happened
+
+pending
+
+## DV-07
+
+- **Date and time:** 2026-11-23 20:10 (logged at this time; the prompt was sent a few minutes before and I interrupted the answer)
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-06)
+- **Files touched:** none
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Ya arranca
+```
+
+### What happened
+
+pending
+
+## DV-08
+
+- **Date and time:** 2026-11-23 20:10
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-07)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Ya arranca, pero veo la pantalla de inicio excesivamente basica, no quiero una animacion, quiero fotos realistas o simplemente una pantalla de inicio que parezca bastante mas seria. necesito en la zona de checklist mas cosas, si crees que faltan, y la posibilidad de adjuntar una foto en cada cuarto y que sea posible añadir algo con su foto, por si esta roto o dañado. lo de deposit deadline, hazlo mas profesional, que tenga mas cosas, dame ideas para añadir y que quede mejor, ya que ahora esta muy cutre y tiene muy poco, y vamosa hacer lo mismo con la parte de la firma
+```
+
+### What happened
+
+pending
+
+## DV-09
+
+- **Date and time:** 2026-11-23 20:13
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-08)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Room (A4) primero
+```
+
+### What happened
+
+pending
+
+## DV-10
+
+- **Date and time:** 2026-11-23 20:17
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-09)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, commitea
+```
+
+### What happened
+
+pending

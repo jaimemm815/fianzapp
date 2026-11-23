@@ -13,7 +13,8 @@
     <string name="home_checklist_subtitle">What to photograph in each room</string>
     <string name="home_deadline_subtitle">When your deposit starts earning interest</string>
     <string name="home_signature_demo_subtitle">Try the signature pad</string>
-    <string name="home_house_toggle">Switch the lights</string>
+    <string name="home_section_title">Your rental</string>
+    <string name="home_footer">Fianzapp records the state of the flat and the deposit deadline. It is not legal advice.</string>
     <string name="retry">Retry</string>
 
     <string name="checklist_error">Could not load the checklist: %1$s</string>
