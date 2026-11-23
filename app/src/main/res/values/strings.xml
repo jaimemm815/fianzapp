@@ -8,6 +8,8 @@
 
     <string name="home_lease">Lease</string>
     <string name="home_lease_subtitle">Address, landlord, move-in date and deposit</string>
+    <string name="home_rooms">Rooms</string>
+    <string name="home_rooms_subtitle">The rooms of your flat</string>
     <string name="home_checklist">Checklist</string>
     <string name="home_deadline">Deposit deadline</string>
     <string name="home_signature_demo">Signature pad (demo)</string>
@@ -41,6 +43,21 @@
     <string name="lease_error_amount">Write an amount like 750 or 750,50</string>
     <string name="lease_error_positive">The deposit must be more than 0</string>
     <string name="lease_error_keys_before">Cannot be before the move-in date</string>
+
+    <string name="rooms_title">Rooms</string>
+    <string name="rooms_no_lease">Save the lease first: every room belongs to it.</string>
+    <string name="rooms_open_lease">Fill in the lease</string>
+    <string name="rooms_empty">No rooms yet. Tap Add room to add the first one.</string>
+    <string name="rooms_add">Add room</string>
+    <string name="rooms_add_title">New room</string>
+    <string name="rooms_name">Name</string>
+    <string name="rooms_name_hint">For example Bedroom 2</string>
+    <string name="rooms_type">Type</string>
+    <string name="rooms_type_items">%1$d things to photograph</string>
+    <string name="rooms_delete_cd">Delete %1$s</string>
+    <string name="rooms_delete_title">Delete %1$s?</string>
+    <string name="rooms_delete_text">Its photos are deleted too. This cannot be undone.</string>
+    <string name="rooms_delete_confirm">Delete</string>
 
     <string name="deadline_intro">Pick the day you handed back the keys.</string>
     <string name="deadline_pick_date">Pick date</string>
