@@ -59,6 +59,14 @@
     <string name="rooms_delete_text">Its photos are deleted too. This cannot be undone.</string>
     <string name="rooms_delete_confirm">Delete</string>
 
+    <string name="room_not_found">This room does not exist or was deleted. Go back to the list of rooms.</string>
+    <string name="room_move_in">Move-in</string>
+    <string name="room_move_out">Move-out</string>
+    <string name="room_no_photo">No photo yet</string>
+    <string name="room_damage_title">Damage</string>
+    <string name="room_no_damage">No damage recorded in this room.</string>
+    <string name="room_damage_no_note">Damage without a description</string>
+
     <string name="deadline_intro">Pick the day you handed back the keys.</string>
     <string name="deadline_pick_date">Pick date</string>
     <string name="deadline_keys_returned">Keys handed back: %1$s</string>

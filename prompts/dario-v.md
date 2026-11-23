@@ -344,3 +344,41 @@ Probado, commitea
 ### What happened
 
 pending
+
+## DV-15
+
+- **Date and time:** 2026-11-23 20:40
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-14)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, pantalla Room
+```
+
+### What happened
+
+pending
+
+## DV-16
+
+- **Date and time:** 2026-11-23 20:47
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-15)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Probado, commitea
+```
+
+### What happened
+
+pending

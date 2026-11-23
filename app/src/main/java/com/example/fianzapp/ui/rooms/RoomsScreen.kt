@@ -49,6 +49,7 @@ import com.example.fianzapp.ui.checklist.ChecklistUiState
 @Composable
 fun RoomsScreen(
     onOpenLease: () -> Unit,
+    onOpenRoom: (roomId: Long) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: RoomsViewModel = viewModel()
 ) {
@@ -111,6 +112,7 @@ fun RoomsScreen(
                         RoomRow(
                             room = room,
                             typeName = typeNames[room.typeId] ?: room.typeId,
+                            onOpen = { onOpenRoom(room.id) },
                             onDelete = { roomToDelete = room }
                         )
                     }
@@ -152,8 +154,8 @@ fun RoomsScreen(
 }
 
 @Composable
-private fun RoomRow(room: RoomEntity, typeName: String, onDelete: () -> Unit) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+private fun RoomRow(room: RoomEntity, typeName: String, onOpen: () -> Unit, onDelete: () -> Unit) {
+    Card(onClick = onOpen, modifier = Modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.padding(start = 16.dp, top = 8.dp, bottom = 8.dp, end = 4.dp),
             verticalAlignment = Alignment.CenterVertically

@@ -11,12 +11,15 @@ import com.example.fianzapp.ui.checklist.ChecklistScreen
 import com.example.fianzapp.ui.deadline.DeadlineScreen
 import com.example.fianzapp.ui.home.HomeScreen
 import com.example.fianzapp.ui.lease.LeaseScreen
+import com.example.fianzapp.ui.room.RoomScreen
 import com.example.fianzapp.ui.rooms.RoomsScreen
 import kotlinx.serialization.Serializable
 
 @Serializable object HomeRoute
 @Serializable object LeaseRoute
 @Serializable object RoomsRoute
+/** Everything in a route is text: the id travels as a Long and is read back with toRoute. */
+@Serializable data class RoomRoute(val roomId: Long)
 @Serializable object ChecklistRoute
 @Serializable object DeadlineRoute
 @Serializable object SignatureDemoRoute
@@ -37,7 +40,13 @@ fun FianzappNavHost(
             )
         }
         composable<LeaseRoute> { LeaseScreen() }
-        composable<RoomsRoute> { RoomsScreen(onOpenLease = { navController.navigate(LeaseRoute) }) }
+        composable<RoomsRoute> {
+            RoomsScreen(
+                onOpenLease = { navController.navigate(LeaseRoute) },
+                onOpenRoom = { roomId -> navController.navigate(RoomRoute(roomId)) }
+            )
+        }
+        composable<RoomRoute> { RoomScreen() }
         composable<ChecklistRoute> { ChecklistScreen() }
         composable<DeadlineRoute> { DeadlineScreen() }
         composable<SignatureDemoRoute> { SkeletonScreen() }
