@@ -103,6 +103,7 @@ private class HomeOption(
 
 @Composable
 fun HomeScreen(
+    onLease: () -> Unit,
     onChecklist: () -> Unit,
     onDeadline: () -> Unit,
     onSignatureDemo: () -> Unit,
@@ -110,6 +111,7 @@ fun HomeScreen(
 ) {
     val palette = homePalette()
     val options = listOf(
+        HomeOption(R.string.home_lease, R.string.home_lease_subtitle, Icons.Filled.Home, onLease),
         HomeOption(R.string.home_checklist, R.string.home_checklist_subtitle, Icons.AutoMirrored.Filled.List, onChecklist),
         HomeOption(R.string.home_deadline, R.string.home_deadline_subtitle, Icons.Filled.DateRange, onDeadline),
         HomeOption(R.string.home_signature_demo, R.string.home_signature_demo_subtitle, Icons.Filled.Edit, onSignatureDemo)
@@ -253,6 +255,6 @@ private fun HomeOptionRow(option: HomeOption, palette: HomePalette) {
 @Composable
 private fun HomeScreenPreview() {
     FianzappTheme {
-        HomeScreen(onChecklist = {}, onDeadline = {}, onSignatureDemo = {})
+        HomeScreen(onLease = {}, onChecklist = {}, onDeadline = {}, onSignatureDemo = {})
     }
 }

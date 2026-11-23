@@ -6,6 +6,8 @@
     <string name="signature_lines">Lines drawn: %1$d</string>
     <string name="signature_clear">Clear</string>
 
+    <string name="home_lease">Lease</string>
+    <string name="home_lease_subtitle">Address, landlord, move-in date and deposit</string>
     <string name="home_checklist">Checklist</string>
     <string name="home_deadline">Deposit deadline</string>
     <string name="home_signature_demo">Signature pad (demo)</string>
@@ -19,6 +21,26 @@
 
     <string name="checklist_error">Could not load the checklist: %1$s</string>
     <string name="checklist_no_items">Nothing to photograph in this room.</string>
+
+    <string name="lease_title">Lease</string>
+    <string name="lease_empty">No lease saved yet. Fill in the form and tap Save.</string>
+    <string name="lease_address">Address of the flat</string>
+    <string name="lease_landlord">Landlord\'s name</string>
+    <string name="lease_move_in">Move-in date</string>
+    <string name="lease_deposit">Deposit (€)</string>
+    <string name="lease_keys_returned">Day you handed back the keys (optional)</string>
+    <string name="lease_date_hint">As 2026-11-01</string>
+    <string name="lease_deposit_hint">For example 750 or 750,50</string>
+    <string name="lease_keys_hint">Leave it empty until the end of the lease</string>
+    <string name="lease_save">Save</string>
+    <string name="lease_fill_required">Fill in the address, the landlord, the move-in date and the deposit to save.</string>
+    <string name="lease_ready">Ready to save.</string>
+    <string name="lease_saved">Saved.</string>
+    <string name="lease_error_required">Required</string>
+    <string name="lease_error_date">Write a real date as 2026-11-01</string>
+    <string name="lease_error_amount">Write an amount like 750 or 750,50</string>
+    <string name="lease_error_positive">The deposit must be more than 0</string>
+    <string name="lease_error_keys_before">Cannot be before the move-in date</string>
 
     <string name="deadline_intro">Pick the day you handed back the keys.</string>
     <string name="deadline_pick_date">Pick date</string>

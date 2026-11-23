@@ -268,3 +268,41 @@ Sí, commitea
 ### What happened
 
 pending
+
+## DV-11
+
+- **Date and time:** 2026-11-23 20:17
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-10)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, Rooms
+```
+
+### What happened
+
+pending
+
+## DV-12
+
+- **Date and time:** 2026-11-23 20:23
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-11)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Probado, commitea
+```
+
+### What happened
+
+pending
