@@ -9,6 +9,11 @@
     <string name="home_checklist">Checklist</string>
     <string name="home_deadline">Deposit deadline</string>
     <string name="home_signature_demo">Signature pad (demo)</string>
+    <string name="home_tagline">The state of your flat, room by room, and the deadline for your deposit.</string>
+    <string name="home_checklist_subtitle">What to photograph in each room</string>
+    <string name="home_deadline_subtitle">When your deposit starts earning interest</string>
+    <string name="home_signature_demo_subtitle">Try the signature pad</string>
+    <string name="home_house_toggle">Switch the lights</string>
     <string name="retry">Retry</string>
 
     <string name="checklist_error">Could not load the checklist: %1$s</string>

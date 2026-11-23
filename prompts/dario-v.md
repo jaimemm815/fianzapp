@@ -70,3 +70,106 @@ A partir de ahora, cada vez que te envíe un prompt:
 ### What happened
 
 pending
+
+## DV-02
+
+- **Date and time:** 2026-11-20 18:38
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-01)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+1. el proyecto entero se divide entre nosotros dos, y un tercero que ahora mismo no forma parte del repositorio.
+2. no te sabria decir.
+3. cambialo
+4. si, lo tiene sin subir
+5. no, pero lo hago yo si es necesario
+```
+
+### What happened
+
+pending
+
+## DV-03
+
+- **Date and time:** 2026-11-20 18:40
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-02)
+- **Files touched:** prompts/dario-v.md, CLAUDE.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+OK CLAUDE.md
+```
+
+### What happened
+
+pending
+
+## DV-04
+
+- **Date and time:** 2026-11-23 18:42
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-03; CLAUDE.md committed in 338a897)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+**Role:** Actúa como diseñador/a UI y desarrollador/a front-end con experiencia en páginas de inicio modernas, interactivas y animadas para aplicaciones web.
+
+**Task:** Rediseña solo la estética de la página principal de mi aplicación: ahora son solo 3 opciones sobre fondo blanco y quiero que tenga elementos interactivos y en movimiento relacionados con la temática de la app. No cambies todavía el interior, el funcionamiento, las acciones ni los documentos de la aplicación.
+
+**Context:**
+- La aplicación gira en torno a una vivienda, un inquilino, un alquiler y el dinero de la fianza. El diseño visual debe reflejar esa temática.
+- La sensación buscada es moderna y profesional.
+- Mantén las 3 opciones actuales de la página principal; solo cambia su apariencia y el entorno visual.
+- Más adelante, en una segunda fase, entraremos en detalle para ajustar visualmente el interior de cada una de las 3 opciones. Ahora no.
+- Tecnología y código actual de la app: [fill this in: framework o lenguaje que usas, y pega el código de la página principal si quieres que lo modifique directamente]
+- Nombres de las 3 opciones y colores o logo de marca, si existen: [fill this in: ...]
+- Cómo quiero empezar: o bien me das primero ideas y propuestas, o pasas directamente a la acción. Elige tú lo más útil: si tienes el código necesario, pasa directamente a implementar una propuesta y añade brevemente 2 o 3 alternativas; si no, empieza con 3 propuestas de diseño breves y recomienda una.
+
+**Format:**
+- Tono claro y directo, en español.
+- Si das propuestas: lista corta, con una frase por idea que describa estilo, animaciones e interacciones (por ejemplo, una casa o llaves animadas, efectos al pasar el cursor, transiciones suaves).
+- Si implementas: entrega el código completo y listo para usar, con una breve explicación de qué cambia y cómo probarlo.
+
+**Quality check:** Antes de responder, comprueba que:
+- Solo has tocado la estética de la página principal, no la lógica ni el interior.
+- Las 3 opciones siguen siendo claras y fáciles de usar.
+- Las animaciones son sutiles, profesionales y no estorban.
+- El diseño funciona en móvil y en escritorio.
+- No has inventado datos sobre mi app; lo que falta lo has señalado.
+```
+
+### What happened
+
+pending
+
+## DV-05
+
+- **Date and time:** 2026-11-23 19:13
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-04)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, commitea
+```
+
+### What happened
+
+pending
