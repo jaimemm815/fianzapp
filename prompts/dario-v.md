@@ -382,3 +382,41 @@ Probado, commitea
 ### What happened
 
 pending
+
+## DV-17
+
+- **Date and time:** 2026-11-23 20:47
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-16)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, cámara
+```
+
+### What happened
+
+pending
+
+## DV-18
+
+- **Date and time:** 2026-11-24 09:47
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-17)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Probado, commitea
+```
+
+### What happened
+
+pending

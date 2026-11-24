@@ -67,6 +67,22 @@
     <string name="room_no_damage">No damage recorded in this room.</string>
     <string name="room_damage_no_note">Damage without a description</string>
 
+    <string name="room_take_photo">Take a photo</string>
+    <string name="room_tap_to_photo">Tap to take a photo</string>
+    <string name="room_add_damage">Add damage</string>
+    <string name="room_damage_note">What is broken or damaged?</string>
+    <string name="room_damage_note_hint">For example: cracked tile next to the sink</string>
+    <string name="room_damage_take_photo">Take photo</string>
+
+    <string name="camera_take">Take photo</string>
+    <string name="camera_saving">Saving…</string>
+    <string name="camera_failed">The photo could not be taken. Try again.</string>
+    <string name="camera_denied_once">Fianzapp needs the camera to photograph the state of each item of the flat. Without it you cannot add new photos.</string>
+    <string name="camera_ask_again">Ask again</string>
+    <string name="camera_denied_for_good">The camera permission is turned off. To take photos, open the app\'s settings, tap Permissions and allow the camera.</string>
+    <string name="camera_open_settings">Open settings</string>
+    <string name="camera_rest_of_app">You can still see the lease, the rooms and the photos you already took.</string>
+
     <string name="deadline_intro">Pick the day you handed back the keys.</string>
     <string name="deadline_pick_date">Pick date</string>
     <string name="deadline_keys_returned">Keys handed back: %1$s</string>

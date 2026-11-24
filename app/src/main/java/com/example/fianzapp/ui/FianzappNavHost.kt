@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.example.fianzapp.ui.camera.CameraScreen
 import com.example.fianzapp.SkeletonScreen
 import com.example.fianzapp.ui.checklist.ChecklistScreen
 import com.example.fianzapp.ui.deadline.DeadlineScreen
@@ -20,6 +22,16 @@ import kotlinx.serialization.Serializable
 @Serializable object RoomsRoute
 /** Everything in a route is text: the id travels as a Long and is read back with toRoute. */
 @Serializable data class RoomRoute(val roomId: Long)
+/**
+ * A8: the camera for one photo. [itemId] is -1 for a damage photo, which carries its [note].
+ * [phase] is the name of a Phase (MOVE_IN or MOVE_OUT).
+ */
+@Serializable data class CameraRoute(
+    val roomId: Long,
+    val itemId: Int,
+    val phase: String,
+    val note: String = ""
+)
 @Serializable object ChecklistRoute
 @Serializable object DeadlineRoute
 @Serializable object SignatureDemoRoute
@@ -46,7 +58,20 @@ fun FianzappNavHost(
                 onOpenRoom = { roomId -> navController.navigate(RoomRoute(roomId)) }
             )
         }
-        composable<RoomRoute> { RoomScreen() }
+        composable<RoomRoute> { entry ->
+            val roomId = entry.toRoute<RoomRoute>().roomId
+            RoomScreen(
+                onTakePhoto = { itemId, phase ->
+                    navController.navigate(CameraRoute(roomId, itemId, phase.name))
+                },
+                onAddDamage = { note, phase ->
+                    navController.navigate(CameraRoute(roomId, itemId = -1, phase = phase.name, note = note))
+                }
+            )
+        }
+        composable<CameraRoute> {
+            CameraScreen(onPhotoSaved = { navController.popBackStack() })
+        }
         composable<ChecklistRoute> { ChecklistScreen() }
         composable<DeadlineRoute> { DeadlineScreen() }
         composable<SignatureDemoRoute> { SkeletonScreen() }
