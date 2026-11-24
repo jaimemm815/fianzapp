@@ -420,3 +420,41 @@ Probado, commitea
 ### What happened
 
 pending
+
+## DV-19
+
+- **Date and time:** 2026-11-24 09:52
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-18)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Compartir foto (A2)
+```
+
+### What happened
+
+pending
+
+## DV-20
+
+- **Date and time:** 2026-11-24 10:03
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-19)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Probado, commitea
+```
+
+### What happened
+
+pending

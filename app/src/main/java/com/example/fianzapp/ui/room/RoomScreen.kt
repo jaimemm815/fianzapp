@@ -1,6 +1,11 @@
 package com.example.fianzapp.ui.room
 
+import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.Icon
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.AlertDialog
@@ -225,7 +230,27 @@ private fun PhotoSlot(
             }
         }
         photo?.let {
-            Text(formatTakenAt(it.takenAt), style = MaterialTheme.typography.bodySmall)
+            val context = LocalContext.current
+            val chooserTitle = stringResource(R.string.room_share_title)
+            val missingText = stringResource(R.string.room_share_missing)
+            val noAppText = stringResource(R.string.room_share_no_app)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    formatTakenAt(it.takenAt),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.weight(1f)
+                )
+                TextButton(onClick = {
+                    when (sharePhoto(context, it.path, chooserTitle)) {
+                        ShareProblem.FILE_MISSING -> Toast.makeText(context, missingText, Toast.LENGTH_LONG).show()
+                        ShareProblem.NO_APP -> Toast.makeText(context, noAppText, Toast.LENGTH_LONG).show()
+                        null -> Unit
+                    }
+                }) {
+                    Icon(Icons.Filled.Share, contentDescription = null)
+                    Text(stringResource(R.string.room_share), modifier = Modifier.padding(start = 4.dp))
+                }
+            }
         }
     }
 }

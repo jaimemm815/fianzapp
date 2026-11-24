@@ -74,6 +74,11 @@
     <string name="room_damage_note_hint">For example: cracked tile next to the sink</string>
     <string name="room_damage_take_photo">Take photo</string>
 
+    <string name="room_share">Share</string>
+    <string name="room_share_title">Share the photo</string>
+    <string name="room_share_missing">This photo is no longer on the phone. Take it again.</string>
+    <string name="room_share_no_app">No app on this phone can receive a photo.</string>
+
     <string name="camera_take">Take photo</string>
     <string name="camera_saving">Saving…</string>
     <string name="camera_failed">The photo could not be taken. Try again.</string>
