@@ -17,6 +17,30 @@
     <string name="home_checklist_subtitle">What to photograph in each room</string>
     <string name="home_deadline_subtitle">When your deposit starts earning interest</string>
     <string name="home_report_subtitle">Sign the move-in and move-out reports</string>
+    <string name="home_landlord">Landlord</string>
+    <string name="home_landlord_subtitle">The landlord reads the signed reports</string>
+    <string name="home_settings">Settings</string>
+    <string name="home_settings_subtitle">Days of warning and the deposit reminder</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_days_title">Days of warning</string>
+    <string name="settings_days_label">Days before the deposit deadline</string>
+    <string name="settings_days_hint">A whole number from 1 to %1$d</string>
+    <string name="settings_days_error">Write a whole number from 1 to %1$d. Still saved: %2$d days.</string>
+    <string name="settings_days_saved">Saved: %1$d days before the deadline.</string>
+    <string name="settings_reminder_title">Deposit reminder</string>
+    <string name="settings_reminder_text">A notification on the day of warning and another on the deadline.</string>
+    <string name="settings_reminder_denied">Notifications are not allowed, so the reminder is off. You can still see the deadline in Deposit deadline.</string>
+    <string name="settings_reminder_not_exact">Android chooses when the check runs each day, so the reminder may arrive later in the day.</string>
+    <string name="settings_check_now">Check now</string>
+
+    <string name="reminder_channel">Deposit reminder</string>
+    <string name="reminder_title">Deposit deadline</string>
+    <string name="reminder_warning_text">The deposit deadline is on %1$s. Not legal advice.</string>
+    <string name="reminder_deadline_text">The deposit deadline was %1$s: from that day the deposit earns legal interest if it has not been returned. Not legal advice.</string>
+    <string name="deadline_detail_reminder">Reminder</string>
+    <string name="deadline_reminder_on">%1$s (%2$d days before)</string>
+    <string name="deadline_reminder_off">Off (turn it on in Settings)</string>
     <string name="home_section_title">Your rental</string>
     <string name="home_footer">Fianzapp records the state of the flat and the deposit deadline. It is not legal advice.</string>
     <string name="retry">Retry</string>
@@ -79,6 +103,18 @@
     <string name="room_share_missing">This photo is no longer on the phone. Take it again.</string>
     <string name="room_share_no_app">No app on this phone can receive a photo.</string>
 
+    <string name="room_no_position">No position: saved without location</string>
+    <string name="room_position">Taken at %1$s, %2$s</string>
+    <string name="room_far_from_flat">Far from the flat: %1$s km away</string>
+    <string name="room_labels">Labels: %1$s</string>
+    <string name="room_labels_none">No label recognised: compare by eye</string>
+    <string name="room_labels_failed">Not labelled</string>
+    <string name="room_compare_same">Same thing in both photos</string>
+    <string name="room_compare_different">Something different in each photo</string>
+    <string name="room_compare_cannot_tell">Cannot tell: compare the photos by eye</string>
+    <string name="camera_location_on">Location on: the photo keeps where it was taken</string>
+    <string name="camera_location_off">No location: the photo is saved without a position</string>
+
     <string name="camera_take">Take photo</string>
     <string name="camera_saving">Saving…</string>
     <string name="camera_failed">The photo could not be taken. Try again.</string>
@@ -133,6 +169,30 @@
     <string name="report_confirm_text">Once signed, the report and its signatures cannot be changed.</string>
     <string name="report_signed_on">Signed on %1$s</string>
     <string name="report_locked">A signed report cannot be changed.</string>
+    <string name="report_send_title">Send to the landlord</string>
+    <string name="report_send_sign_in">Sign in with the tenant\'s account to send the report.</string>
+    <string name="report_send">Send report</string>
+    <string name="report_sending">Sending…</string>
+    <string name="report_sent">Sent. The landlord can read it now.</string>
+    <string name="report_send_failed">Could not send the report: %1$s</string>
+    <string name="report_send_not_signed">The report must be signed before it is sent.</string>
+
+    <string name="account_sign_in_title">Sign in</string>
+    <string name="account_email">Email</string>
+    <string name="account_password">Password</string>
+    <string name="account_password_hint">At least 6 characters. Use a made-up test account.</string>
+    <string name="account_sign_in">Sign in</string>
+    <string name="account_create">Create account</string>
+    <string name="account_signed_in_as">Signed in as %1$s</string>
+    <string name="account_sign_out">Sign out</string>
+    <string name="account_not_configured">Firebase is not set up in this copy of the app yet (app/google-services.json is missing). See the README.</string>
+
+    <string name="landlord_title">Landlord</string>
+    <string name="landlord_sign_in_first">Sign in with the landlord\'s account to read the reports of the lease.</string>
+    <string name="landlord_loading">Loading the reports…</string>
+    <string name="landlord_no_reports">No report has been sent yet.</string>
+    <string name="landlord_error">The reports cannot be read: %1$s</string>
+    <string name="landlord_counts">%1$d rooms · %2$d checklist photos · %3$d damages</string>
 
     <string name="not_legal_advice">Counted as one month from date to date (art. 36.4 LAU, art. 5 Código Civil). This is not legal advice.</string>
 </resources>

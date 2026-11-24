@@ -26,6 +26,8 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -109,6 +111,8 @@ fun HomeScreen(
     onChecklist: () -> Unit,
     onDeadline: () -> Unit,
     onReport: () -> Unit,
+    onLandlord: () -> Unit,
+    onSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val palette = homePalette()
@@ -117,7 +121,9 @@ fun HomeScreen(
         HomeOption(R.string.home_rooms, R.string.home_rooms_subtitle, Icons.AutoMirrored.Filled.List, onRooms),
         HomeOption(R.string.home_checklist, R.string.home_checklist_subtitle, Icons.Filled.CheckCircle, onChecklist),
         HomeOption(R.string.home_deadline, R.string.home_deadline_subtitle, Icons.Filled.DateRange, onDeadline),
-        HomeOption(R.string.home_report, R.string.home_report_subtitle, Icons.Filled.Edit, onReport)
+        HomeOption(R.string.home_report, R.string.home_report_subtitle, Icons.Filled.Edit, onReport),
+        HomeOption(R.string.home_landlord, R.string.home_landlord_subtitle, Icons.Filled.Person, onLandlord),
+        HomeOption(R.string.home_settings, R.string.home_settings_subtitle, Icons.Filled.Settings, onSettings)
     )
 
     Column(
@@ -258,6 +264,6 @@ private fun HomeOptionRow(option: HomeOption, palette: HomePalette) {
 @Composable
 private fun HomeScreenPreview() {
     FianzappTheme {
-        HomeScreen(onLease = {}, onRooms = {}, onChecklist = {}, onDeadline = {}, onReport = {})
+        HomeScreen(onLease = {}, onRooms = {}, onChecklist = {}, onDeadline = {}, onReport = {}, onLandlord = {}, onSettings = {})
     }
 }

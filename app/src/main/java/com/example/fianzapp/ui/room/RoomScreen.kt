@@ -46,6 +46,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.fianzapp.R
+import androidx.compose.ui.graphics.Color
+import com.example.fianzapp.domain.Comparison
+import com.example.fianzapp.domain.isFarFromFlat
+import com.example.fianzapp.domain.parseLabels
+import java.util.Locale
 import com.example.fianzapp.data.db.Phase
 import com.example.fianzapp.data.db.PhotoEntity
 import java.io.File
@@ -111,7 +116,7 @@ fun RoomScreen(
                 item { Text(stringResource(R.string.checklist_no_items)) }
             }
             items(s.items, key = { it.item.id }) { entry ->
-                ItemCard(entry, onTakePhoto = { phase -> onTakePhoto(entry.item.id, phase) })
+                ItemCard(entry, s.distances, onTakePhoto = { phase -> onTakePhoto(entry.item.id, phase) })
             }
 
             item {
@@ -134,13 +139,13 @@ fun RoomScreen(
             if (s.damages.isEmpty()) {
                 item { Text(stringResource(R.string.room_no_damage)) }
             }
-            items(s.damages, key = { it.id }) { DamageCard(it) }
+            items(s.damages, key = { it.id }) { DamageCard(it, s.distances[it.id]) }
         }
     }
 }
 
 @Composable
-private fun ItemCard(entry: ItemWithPhotos, onTakePhoto: (Phase) -> Unit) {
+private fun ItemCard(entry: ItemWithPhotos, distances: Map<Long, Float>, onTakePhoto: (Phase) -> Unit) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -152,19 +157,40 @@ private fun ItemCard(entry: ItemWithPhotos, onTakePhoto: (Phase) -> Unit) {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 PhotoSlot(
                     stringResource(R.string.room_move_in), entry.moveIn, Modifier.weight(1f),
+                    distance = entry.moveIn?.let { distances[it.id] },
                     onClick = { onTakePhoto(Phase.MOVE_IN) }
                 )
                 PhotoSlot(
                     stringResource(R.string.room_move_out), entry.moveOut, Modifier.weight(1f),
+                    distance = entry.moveOut?.let { distances[it.id] },
                     onClick = { onTakePhoto(Phase.MOVE_OUT) }
                 )
             }
+            entry.comparison?.let { ComparisonChip(it) }
         }
     }
 }
 
+/** A10: the answer of the comparison. It checks like with like; it never says whether something is damaged. */
 @Composable
-private fun DamageCard(photo: PhotoEntity) {
+private fun ComparisonChip(comparison: Comparison) {
+    val (text, colour) = when (comparison) {
+        Comparison.SAME -> R.string.room_compare_same to MaterialTheme.colorScheme.primary
+        Comparison.DIFFERENT -> R.string.room_compare_different to MaterialTheme.colorScheme.error
+        Comparison.CANNOT_TELL -> R.string.room_compare_cannot_tell to MaterialTheme.colorScheme.outline
+    }
+    Text(
+        stringResource(text),
+        color = Color.White,
+        style = MaterialTheme.typography.labelMedium,
+        modifier = Modifier
+            .background(colour, RoundedCornerShape(50))
+            .padding(horizontal = 12.dp, vertical = 4.dp)
+    )
+}
+
+@Composable
+private fun DamageCard(photo: PhotoEntity, distance: Float?) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -179,7 +205,8 @@ private fun DamageCard(photo: PhotoEntity) {
                     if (photo.phase == Phase.MOVE_IN) R.string.room_move_in else R.string.room_move_out
                 ),
                 photo = photo,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                distance = distance
             )
         }
     }
@@ -194,6 +221,7 @@ private fun PhotoSlot(
     label: String,
     photo: PhotoEntity?,
     modifier: Modifier = Modifier,
+    distance: Float? = null,
     onClick: (() -> Unit)? = null
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -251,8 +279,45 @@ private fun PhotoSlot(
                     Text(stringResource(R.string.room_share), modifier = Modifier.padding(start = 4.dp))
                 }
             }
+            PhotoPlace(it, distance)
+            PhotoLabels(it)
         }
     }
+}
+
+/** A9: where the photo was taken, and a warning when it is far from the flat. */
+@Composable
+private fun PhotoPlace(photo: PhotoEntity, distance: Float?) {
+    val lat = photo.latitude
+    val lng = photo.longitude
+    if (lat == null || lng == null) {
+        // Awkward case: no permission, location off or no position: the photo is kept anyway.
+        Text(stringResource(R.string.room_no_position), style = MaterialTheme.typography.bodySmall)
+        return
+    }
+    Text(
+        stringResource(R.string.room_position, "%.4f".format(Locale.ROOT, lat), "%.4f".format(Locale.ROOT, lng)),
+        style = MaterialTheme.typography.bodySmall
+    )
+    if (isFarFromFlat(distance)) {
+        Text(
+            stringResource(R.string.room_far_from_flat, "%.1f".format(Locale.ROOT, (distance ?: 0f) / 1000f)),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error
+        )
+    }
+}
+
+/** A10: the labels ML Kit found above the threshold. */
+@Composable
+private fun PhotoLabels(photo: PhotoEntity) {
+    val labels = photo.labels
+    val text = when {
+        labels == null -> stringResource(R.string.room_labels_failed)
+        labels.isEmpty() -> stringResource(R.string.room_labels_none)
+        else -> stringResource(R.string.room_labels, parseLabels(labels).joinToString { it.text })
+    }
+    Text(text, style = MaterialTheme.typography.bodySmall)
 }
 
 /** What is broken or damaged, and whether it is found when moving in or moving out. */

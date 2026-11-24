@@ -1,16 +1,36 @@
-// Given by the skeleton: these rules let nobody read or write anything, so that
-// nothing is open by mistake while you set up Firebase.
+// A6: who may read and write the reports of Fianzapp.
 //
-// A6: replace this whole file, this comment included, with rules that let in only the right
-// people. "if request.auth != null" on its own is not enough (Session 9 Guide, section 12).
-// Paste this file in the Firebase console, in Firestore's Rules tab, and publish it. Keep
-// this file and the console equal: the rules you are marked on are the ones in this file.
+// leases/{leaseId} is created by hand in the console with two fields, tenantUid and landlordUid.
+// Its reports live in leases/{leaseId}/reports/{phase}. The reports do not hold the two uids, so
+// the rules go up to the lease's document to read them (Session 9 Guide, sections 12.4 and 12.5).
+//
+// Publish this same text in the Firebase console, in Firestore's Rules tab, after trying it in the
+// Rules Playground: the tenant reads and writes, the landlord only reads, anyone else is denied.
 
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
+
+    function isTenant(lease) {
+      return request.auth != null && request.auth.uid == lease.data.tenantUid;
+    }
+
+    function isLandlord(lease) {
+      return request.auth != null && request.auth.uid == lease.data.landlordUid;
+    }
+
+    match /leases/{leaseId} {
+      // The lease document itself is written only in the console.
+      allow read: if isTenant(resource) || isLandlord(resource);
+      allow write: if false;
+
+      match /reports/{reportId} {
+        function lease() {
+          return get(/databases/$(database)/documents/leases/$(leaseId));
+        }
+        allow read: if isTenant(lease()) || isLandlord(lease());
+        allow write: if isTenant(lease());
+      }
     }
   }
 }

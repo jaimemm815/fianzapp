@@ -36,16 +36,27 @@ class CameraViewModel(
         return File(folder, "${what}_${phase.name}_${System.currentTimeMillis()}.jpg")
     }
 
-    /** Adds the row of a photo that CameraX has already saved, then calls [onSaved]. */
+    /**
+     * Adds the row of a photo that CameraX has already saved, then calls [onSaved].
+     * A9: with its position when there is one; the photo is saved even with no position.
+     * A10: with its labels; a labeler that fails leaves them null and the photo is still saved.
+     */
     fun savePhoto(file: File, onSaved: () -> Unit) {
+        val context = getApplication<Application>()
+        val takenAt = System.currentTimeMillis()
         viewModelScope.launch {
+            val location = currentLocation(context)
+            val labels = labelPhoto(context, file)
             photoDao.insert(
                 PhotoEntity(
                     roomId = route.roomId,
                     itemId = itemId,
                     phase = phase,
                     path = file.absolutePath,
-                    takenAt = System.currentTimeMillis(),
+                    takenAt = takenAt,
+                    latitude = location?.latitude,
+                    longitude = location?.longitude,
+                    labels = labels,
                     note = note
                 )
             )

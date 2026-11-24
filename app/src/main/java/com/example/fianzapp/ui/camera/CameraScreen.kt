@@ -16,6 +16,9 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -77,17 +80,36 @@ fun CameraScreen(
         }
     }
 
+    // A9: the location is asked for on this screen too, after the camera. The app must work with
+    // only the approximate one, and with none: the photo is then saved without a position.
+    var hasLocation by remember { mutableStateOf(hasLocationPermission(context)) }
+    var locationAsked by rememberSaveable { mutableStateOf(false) }
+    val locationLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { result ->
+        locationAsked = true
+        hasLocation = result.values.any { it }
+    }
+
     // Ask when the screen opens, not when the app starts.
     LaunchedEffect(Unit) {
         if (!isGranted() && !asked) launcher.launch(Manifest.permission.CAMERA)
     }
+    LaunchedEffect(permission) {
+        if (permission == CameraPermission.GRANTED && !hasLocation && !locationAsked) {
+            locationLauncher.launch(
+                arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+            )
+        }
+    }
     // Coming back from Settings with the permission turned on.
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
         if (isGranted()) permission = CameraPermission.GRANTED
+        hasLocation = hasLocationPermission(context)
     }
 
     when (permission) {
-        CameraPermission.GRANTED -> CameraPreview(viewModel, onPhotoSaved, modifier)
+        CameraPermission.GRANTED -> CameraPreview(viewModel, hasLocation, onPhotoSaved, modifier)
         CameraPermission.ASK -> Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }
@@ -116,6 +138,7 @@ fun CameraScreen(
 @Composable
 private fun CameraPreview(
     viewModel: CameraViewModel,
+    hasLocation: Boolean,
     onPhotoSaved: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -153,6 +176,15 @@ private fun CameraPreview(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+            Text(
+                stringResource(if (hasLocation) R.string.camera_location_on else R.string.camera_location_off),
+                color = Color.White,
+                style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(8.dp))
+                    .padding(horizontal = 10.dp, vertical = 4.dp)
+            )
             if (failed) {
                 Text(
                     stringResource(R.string.camera_failed),

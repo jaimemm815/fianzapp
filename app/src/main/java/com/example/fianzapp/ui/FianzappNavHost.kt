@@ -11,10 +11,12 @@ import com.example.fianzapp.ui.camera.CameraScreen
 import com.example.fianzapp.ui.checklist.ChecklistScreen
 import com.example.fianzapp.ui.deadline.DeadlineScreen
 import com.example.fianzapp.ui.home.HomeScreen
+import com.example.fianzapp.ui.landlord.LandlordScreen
 import com.example.fianzapp.ui.lease.LeaseScreen
 import com.example.fianzapp.ui.report.ReportScreen
 import com.example.fianzapp.ui.room.RoomScreen
 import com.example.fianzapp.ui.rooms.RoomsScreen
+import com.example.fianzapp.ui.settings.SettingsScreen
 import kotlinx.serialization.Serializable
 
 @Serializable object HomeRoute
@@ -35,6 +37,8 @@ import kotlinx.serialization.Serializable
 @Serializable object ChecklistRoute
 @Serializable object DeadlineRoute
 @Serializable object ReportRoute
+@Serializable object SettingsRoute
+@Serializable object LandlordRoute
 
 @Composable
 fun FianzappNavHost(
@@ -48,7 +52,9 @@ fun FianzappNavHost(
                 onRooms = { navController.navigate(RoomsRoute) },
                 onChecklist = { navController.navigate(ChecklistRoute) },
                 onDeadline = { navController.navigate(DeadlineRoute) },
-                onReport = { navController.navigate(ReportRoute) }
+                onReport = { navController.navigate(ReportRoute) },
+                onLandlord = { navController.navigate(LandlordRoute) },
+                onSettings = { navController.navigate(SettingsRoute) }
             )
         }
         composable<LeaseRoute> { LeaseScreen() }
@@ -75,5 +81,7 @@ fun FianzappNavHost(
         composable<ChecklistRoute> { ChecklistScreen() }
         composable<DeadlineRoute> { DeadlineScreen(onOpenLease = { navController.navigate(LeaseRoute) }) }
         composable<ReportRoute> { ReportScreen(onOpenLease = { navController.navigate(LeaseRoute) }) }
+        composable<SettingsRoute> { SettingsScreen() }
+        composable<LandlordRoute> { LandlordScreen() }
     }
 }

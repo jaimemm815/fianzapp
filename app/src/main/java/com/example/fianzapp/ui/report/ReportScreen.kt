@@ -39,6 +39,10 @@ import com.example.fianzapp.SignaturePad
 import com.example.fianzapp.data.db.Phase
 import com.example.fianzapp.decodeSignature
 import com.example.fianzapp.encodeSignature
+import com.example.fianzapp.ui.account.AccountViewModel
+import com.example.fianzapp.ui.account.FirebaseNotConfigured
+import com.example.fianzapp.ui.account.SignInForm
+import com.example.fianzapp.ui.account.SignedInBar
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -116,7 +120,10 @@ private fun ReportContent(state: ReportUiState.Ready, viewModel: ReportViewModel
             )
 
             when {
-                summary.isSigned -> SignedReport(summary)
+                summary.isSigned -> {
+                    SignedReport(summary)
+                    SendToLandlord(onSend = { viewModel.send(phase) }, viewModel = viewModel)
+                }
                 // Awkward case: nothing to sign yet.
                 !summary.hasPhotos -> Text(
                     stringResource(R.string.report_no_photos),
@@ -230,6 +237,46 @@ private fun SignatureBlock(label: String, text: String, onChange: (String) -> Un
             signature = decodeSignature(text),
             onSignatureChange = { onChange(encodeSignature(it)) }
         )
+    }
+}
+
+/** A6: a signed report goes to Firestore. Sending needs the tenant's account. */
+@Composable
+private fun SendToLandlord(
+    onSend: () -> Unit,
+    viewModel: ReportViewModel,
+    accountViewModel: AccountViewModel = viewModel()
+) {
+    val email by accountViewModel.userEmail.collectAsStateWithLifecycle()
+    val sendState by viewModel.sendState.collectAsStateWithLifecycle()
+
+    HorizontalDivider(Modifier.padding(vertical = 8.dp))
+    Text(stringResource(R.string.report_send_title), style = MaterialTheme.typography.titleMedium)
+    val signedIn = email
+    when {
+        !accountViewModel.configured -> FirebaseNotConfigured()
+        // Awkward case: signed out → sending asks to sign in first.
+        signedIn == null -> {
+            Text(stringResource(R.string.report_send_sign_in), style = MaterialTheme.typography.bodySmall)
+            SignInForm(accountViewModel)
+        }
+        else -> {
+            SignedInBar(signedIn, onSignOut = accountViewModel::signOut)
+            Button(
+                onClick = onSend,
+                enabled = sendState != SendState.Sending,
+                modifier = Modifier.fillMaxWidth()
+            ) { Text(stringResource(R.string.report_send)) }
+            when (val s = sendState) {
+                SendState.Idle -> Unit
+                SendState.Sending -> Text(stringResource(R.string.report_sending))
+                SendState.Sent -> Text(stringResource(R.string.report_sent), color = MaterialTheme.colorScheme.primary)
+                is SendState.Failed -> Text(
+                    stringResource(R.string.report_send_failed, s.message),
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+        }
     }
 }
 

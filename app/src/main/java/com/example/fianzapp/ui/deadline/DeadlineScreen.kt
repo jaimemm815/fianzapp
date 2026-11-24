@@ -57,6 +57,7 @@ import com.example.fianzapp.domain.DeadlineStatus
 import com.example.fianzapp.domain.deadlineStatus
 import com.example.fianzapp.domain.depositDeadline
 import com.example.fianzapp.domain.formatCents
+import com.example.fianzapp.domain.reminderDay
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -214,6 +215,20 @@ private fun DetailsCard(state: DeadlineUiState.Ready, deadline: LocalDate) {
             DetailRow(stringResource(R.string.deadline_detail_keys), state.keysReturned.format(dateFormatter))
             HorizontalDivider(Modifier.padding(vertical = 8.dp))
             DetailRow(stringResource(R.string.deadline_detail_deadline), deadline.format(dateFormatter))
+            HorizontalDivider(Modifier.padding(vertical = 8.dp))
+            // A3: the setting changes what the app shows.
+            DetailRow(
+                stringResource(R.string.deadline_detail_reminder),
+                if (state.reminderOn) {
+                    stringResource(
+                        R.string.deadline_reminder_on,
+                        reminderDay(deadline, state.warningDays).format(dateFormatter),
+                        state.warningDays
+                    )
+                } else {
+                    stringResource(R.string.deadline_reminder_off)
+                }
+            )
         }
     }
 }

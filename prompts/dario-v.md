@@ -534,3 +534,22 @@ Probado, commitea
 ### What happened
 
 pending
+
+## DV-25
+
+- **Date and time:** 2026-11-24 10:20
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-24)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+tienes permisos para hacerlos todos directamente y hacer el commit al final, una vez esten integrados
+```
+
+### What happened
+
+pending
