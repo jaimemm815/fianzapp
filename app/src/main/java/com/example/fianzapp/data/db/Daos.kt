@@ -58,6 +58,13 @@ interface PhotoDao {
     )
     fun observeItemPhoto(roomId: Long, itemId: Int, phase: Phase): Flow<PhotoEntity?>
 
+    /** Every photo of every room of one lease, for the report. */
+    @Query(
+        "SELECT photos.* FROM photos INNER JOIN rooms ON photos.roomId = rooms.id " +
+            "WHERE rooms.leaseId = :leaseId ORDER BY photos.takenAt"
+    )
+    fun observePhotosOfLease(leaseId: Long): Flow<List<PhotoEntity>>
+
     /** Photos of damage that is not on the checklist. */
     @Query("SELECT * FROM photos WHERE roomId = :roomId AND itemId IS NULL ORDER BY takenAt")
     fun observeDamagePhotos(roomId: Long): Flow<List<PhotoEntity>>

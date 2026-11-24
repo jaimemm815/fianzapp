@@ -8,11 +8,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.fianzapp.ui.camera.CameraScreen
-import com.example.fianzapp.SkeletonScreen
 import com.example.fianzapp.ui.checklist.ChecklistScreen
 import com.example.fianzapp.ui.deadline.DeadlineScreen
 import com.example.fianzapp.ui.home.HomeScreen
 import com.example.fianzapp.ui.lease.LeaseScreen
+import com.example.fianzapp.ui.report.ReportScreen
 import com.example.fianzapp.ui.room.RoomScreen
 import com.example.fianzapp.ui.rooms.RoomsScreen
 import kotlinx.serialization.Serializable
@@ -34,7 +34,7 @@ import kotlinx.serialization.Serializable
 )
 @Serializable object ChecklistRoute
 @Serializable object DeadlineRoute
-@Serializable object SignatureDemoRoute
+@Serializable object ReportRoute
 
 @Composable
 fun FianzappNavHost(
@@ -48,7 +48,7 @@ fun FianzappNavHost(
                 onRooms = { navController.navigate(RoomsRoute) },
                 onChecklist = { navController.navigate(ChecklistRoute) },
                 onDeadline = { navController.navigate(DeadlineRoute) },
-                onSignatureDemo = { navController.navigate(SignatureDemoRoute) }
+                onReport = { navController.navigate(ReportRoute) }
             )
         }
         composable<LeaseRoute> { LeaseScreen() }
@@ -74,6 +74,6 @@ fun FianzappNavHost(
         }
         composable<ChecklistRoute> { ChecklistScreen() }
         composable<DeadlineRoute> { DeadlineScreen(onOpenLease = { navController.navigate(LeaseRoute) }) }
-        composable<SignatureDemoRoute> { SkeletonScreen() }
+        composable<ReportRoute> { ReportScreen(onOpenLease = { navController.navigate(LeaseRoute) }) }
     }
 }

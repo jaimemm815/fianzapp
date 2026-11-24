@@ -12,11 +12,11 @@
     <string name="home_rooms_subtitle">The rooms of your flat</string>
     <string name="home_checklist">Checklist</string>
     <string name="home_deadline">Deposit deadline</string>
-    <string name="home_signature_demo">Signature pad (demo)</string>
+    <string name="home_report">Report</string>
     <string name="home_tagline">The state of your flat, room by room, and the deadline for your deposit.</string>
     <string name="home_checklist_subtitle">What to photograph in each room</string>
     <string name="home_deadline_subtitle">When your deposit starts earning interest</string>
-    <string name="home_signature_demo_subtitle">Try the signature pad</string>
+    <string name="home_report_subtitle">Sign the move-in and move-out reports</string>
     <string name="home_section_title">Your rental</string>
     <string name="home_footer">Fianzapp records the state of the flat and the deposit deadline. It is not legal advice.</string>
     <string name="retry">Retry</string>
@@ -113,5 +113,26 @@
     <string name="deadline_example">Example: keys handed back on 31 January 2027, deadline 28 February 2027 (29 February in 2028).</string>
     <string name="deadline_link_lau">Urban Leases Act, art. 36.4 (BOE)</string>
     <string name="deadline_link_civil_code">Civil Code, art. 5 (BOE)</string>
+    <string name="report_no_lease">Save the lease first: the report is about that flat.</string>
+    <string name="report_tab_move_in">Move-in</string>
+    <string name="report_tab_move_out">Move-out</string>
+    <string name="report_summary_title">What this report covers</string>
+    <string name="report_landlord">Landlord</string>
+    <string name="report_tenant">Tenant</string>
+    <string name="report_move_in_date">Move-in date</string>
+    <string name="report_rooms">Rooms</string>
+    <string name="report_item_photos">Checklist photos</string>
+    <string name="report_damages">Damage recorded</string>
+    <string name="report_declaration_move_in">By signing, the tenant and the landlord agree that the photos of this report show the state of the flat at %1$s when the tenant moved in.</string>
+    <string name="report_declaration_move_out">By signing, the tenant and the landlord agree that the photos of this report show the state of the flat at %1$s when the tenant moved out.</string>
+    <string name="report_no_photos">Take at least one photo for this report before signing it: open Rooms and photograph the items.</string>
+    <string name="report_sign">Sign report</string>
+    <string name="report_both_must_sign">Both the tenant and the landlord must sign.</string>
+    <string name="report_ready_to_sign">Both have signed. Tap Sign report to save it.</string>
+    <string name="report_confirm_title">Sign this report?</string>
+    <string name="report_confirm_text">Once signed, the report and its signatures cannot be changed.</string>
+    <string name="report_signed_on">Signed on %1$s</string>
+    <string name="report_locked">A signed report cannot be changed.</string>
+
     <string name="not_legal_advice">Counted as one month from date to date (art. 36.4 LAU, art. 5 Código Civil). This is not legal advice.</string>
 </resources>
