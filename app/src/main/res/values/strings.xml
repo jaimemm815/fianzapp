@@ -88,9 +88,30 @@
     <string name="camera_open_settings">Open settings</string>
     <string name="camera_rest_of_app">You can still see the lease, the rooms and the photos you already took.</string>
 
-    <string name="deadline_intro">Pick the day you handed back the keys.</string>
-    <string name="deadline_pick_date">Pick date</string>
-    <string name="deadline_keys_returned">Keys handed back: %1$s</string>
-    <string name="deadline_result">The deposit earns legal interest from: %1$s</string>
+    <string name="deadline_no_lease">Save the lease first. The deadline is worked out from the day you hand back the keys.</string>
+    <string name="deadline_no_keys">The deadline starts when you hand back the keys. When you do, add that day in the lease.</string>
+    <string name="deadline_open_lease">Open the lease</string>
+    <string name="deadline_summary_label">The deposit earns legal interest from</string>
+    <string name="deadline_days_left">%1$d days left</string>
+    <string name="deadline_today">The deadline is today</string>
+    <string name="deadline_passed">Passed %1$d days ago</string>
+    <string name="deadline_detail_address">Flat</string>
+    <string name="deadline_detail_deposit">Deposit</string>
+    <string name="deadline_detail_keys">Keys handed back</string>
+    <string name="deadline_detail_deadline">Deadline</string>
+    <string name="deadline_euros">%1$s €</string>
+    <string name="deadline_timeline">Timeline</string>
+    <string name="deadline_step_move_in">Moved in</string>
+    <string name="deadline_step_keys">Keys handed back</string>
+    <string name="deadline_step_deadline">Deposit deadline</string>
+    <string name="deadline_add_calendar">Add to calendar</string>
+    <string name="deadline_calendar_title">Deposit deadline</string>
+    <string name="deadline_calendar_description">The deposit of %1$s earns legal interest from today if it has not been returned. Not legal advice.</string>
+    <string name="deadline_no_calendar">No calendar app on this phone.</string>
+    <string name="deadline_how_counted">How the deadline is counted</string>
+    <string name="deadline_how_counted_text">One month from the day you handed back the keys, from date to date. When that month has no such day, the deadline is its last day. Weekends and holidays count too.</string>
+    <string name="deadline_example">Example: keys handed back on 31 January 2027, deadline 28 February 2027 (29 February in 2028).</string>
+    <string name="deadline_link_lau">Urban Leases Act, art. 36.4 (BOE)</string>
+    <string name="deadline_link_civil_code">Civil Code, art. 5 (BOE)</string>
     <string name="not_legal_advice">Counted as one month from date to date (art. 36.4 LAU, art. 5 Código Civil). This is not legal advice.</string>
 </resources>

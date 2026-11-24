@@ -458,3 +458,41 @@ Probado, commitea
 ### What happened
 
 pending
+
+## DV-21
+
+- **Date and time:** 2026-11-24 10:06
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-20)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, Deposit deadline
+```
+
+### What happened
+
+pending
+
+## DV-22
+
+- **Date and time:** 2026-11-24 10:08
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-21)
+- **Files touched:** prompts/dario-v.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Probado, commitea
+```
+
+### What happened
+
+pending

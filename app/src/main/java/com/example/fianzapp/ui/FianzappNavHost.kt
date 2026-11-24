@@ -73,7 +73,7 @@ fun FianzappNavHost(
             CameraScreen(onPhotoSaved = { navController.popBackStack() })
         }
         composable<ChecklistRoute> { ChecklistScreen() }
-        composable<DeadlineRoute> { DeadlineScreen() }
+        composable<DeadlineRoute> { DeadlineScreen(onOpenLease = { navController.navigate(LeaseRoute) }) }
         composable<SignatureDemoRoute> { SkeletonScreen() }
     }
 }
