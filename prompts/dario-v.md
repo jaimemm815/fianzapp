@@ -591,3 +591,22 @@ Sí, el README
 ### What happened
 
 pending
+
+## DV-28
+
+- **Date and time:** 2026-11-25 13:06
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-27)
+- **Files touched:** prompts/dario-v.md, README.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, complétala
+```
+
+### What happened
+
+pending

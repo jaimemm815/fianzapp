@@ -56,7 +56,7 @@ All paths are under `app/src/main/java/com/example/fianzapp/` except `firestore.
 
 ## Release (C2)
 
-The `.aab` is signed with a release key created in Android Studio (*Build > Generate Signed Bundle/APK > Android App Bundle > Create new*). The `.jks` file is kept outside the repository by one member, and its passwords are never written in any file or prompt. *(Pending: add which member keeps it and where, once the key exists.)*
+The `.aab` is signed with our own release key (certificate valid until 2051), created in Android Studio with *Build > Generate Signed App Bundle or APK > Android App Bundle > Create new*. **Darío** keeps the `.jks` file on his computer, in a folder outside the repository. Only he knows its passwords; they are never written in any file or prompt. Neither the `.jks` nor the `.aab` is committed.
 
 Google Play does not accept the debug key because Android Studio creates it automatically on every computer, with a known password and the same "Android Debug" certificate for everyone. It proves nothing about who published the app, and an app signed with it could not be updated later with the same identity. Play requires a private release key that only the developer holds.
 
