@@ -3,10 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
-    // A6: remove the two slashes once app/google-services.json is in place (see section 11
-    // of the skeleton's document).
+    // A6: reads app/google-services.json (see section 11 of the skeleton's document).
     // Without that file, this line stops the build.
-    // alias(libs.plugins.google.services)
+    alias(libs.plugins.google.services)
 }
 
 android {
