@@ -6,11 +6,28 @@ This README is yours. Fill it in as you go: it is part of your submission, and t
 
 ## How to run it
 
-Write what someone needs to run your app from a fresh copy of the repository, besides the steps in the skeleton's guide. For example: how to create an account in the app, or what to tap first. Never write a password here or anywhere else in the repository.
+Besides the steps in the skeleton's guide:
+
+1. Open the project in Android Studio and run the `app` configuration. A7 (notification permission) and A8 (camera) need an emulator or phone with **Android 13 or later**; we test on a Pixel 10a emulator with API 37.
+2. `app/google-services.json` is in the repository and points to the Firebase project `fianzapp-2df15` (free Spark plan). Nothing else is needed to build.
+3. Start on Home: **Lease** first (address, landlord, move-in date, deposit). Every other screen reads the lease.
+4. **Rooms → Add room**, open the room and tap the **Move-in** or **Move-out** slot of an item to take its photo. The **Report** tab of a phase can be signed once that phase has at least one photo.
+5. **Location (A9):** in the emulator, open *Extended controls (⋯) → Location*, pick a point and press *Set location* before taking photos. Approximate location is enough; without it the photo is still saved, with no position.
+6. **Firebase accounts (A6):** the project has two invented test accounts, one for the tenant and one for the landlord, created in the console under *Authentication → Users*. Ask the group for their passwords; they are never written in the repository. To recreate them in another project:
+   - In *Authentication → Sign-in method*, enable Email/Password, then add the two users and copy each **User UID**.
+   - In *Firestore Database → Data*, create collection `leases`, document `fianzapp-lease`, with two string fields `tenantUid` and `landlordUid` holding those UIDs.
+   - In *Firestore Database → Rules*, publish the content of `firestore.rules`.
+7. To try A6: **Report** → sign the report → sign in as the tenant → **Send**. Then **Sign out**, open **Landlord** and sign in as the landlord: the report appears, live.
+8. **Reminder (A7):** in **Settings**, set the days of warning, turn the reminder on (the app asks for permission to notify) and use **Check now** to run the worker once. WorkManager does not run at an exact time, so the daily check can arrive later in the day.
 
 ## Real API or recorded response (A5)
 
-Say how to switch between the real call to the checklist file and the recorded response, and which of the two the app uses as you submit it.
+The switch is the constant `USE_RECORDED_CHECKLIST` in `app/src/main/java/com/example/fianzapp/data/ChecklistRepository.kt`:
+
+- `true`: the app reads the recorded response, `app/src/main/assets/recorded/checklist.json`, which works with no network.
+- `false`: Retrofit calls `https://cunef-mia-sap-proyecto.vercel.app/data/app5/checklist.json` through the shared `httpClient`.
+
+Both sources are parsed with the same `lenientJson`. **As submitted, the app uses the recorded response (`true`).**
 
 ## Coverage table
 
@@ -18,28 +35,30 @@ One row for each row of block A. A row that is not in this table scores 0.
 
 | Row | Feature | Files | Screen |
 |---|---|---|---|
-| A1 | | | |
-| A2 | | | |
-| A3 | | | |
-| A4 | | | |
-| A5 | | | |
-| A6 | | | |
-| A7 | | | |
-| A8 | | | |
-| A9 | | | |
-| A10 | | | |
+| A1 | Lease form with state hoisting and `rememberSaveable`; checks dates and a deposit with a decimal comma or point | `ui/lease/LeaseScreen.kt`, `ui/lease/LeaseViewModel.kt`, `domain/LeaseValidation.kt` | Lease |
+| A2 | List of rooms, one room with its before and after photos (Coil), type-safe routes carrying the room id, share a photo through the FileProvider | `ui/rooms/RoomsScreen.kt`, `ui/rooms/RoomsViewModel.kt`, `ui/room/RoomScreen.kt`, `ui/room/RoomViewModel.kt`, `ui/room/SharePhoto.kt`, `ui/FianzappNavHost.kt` | Rooms, Room |
+| A3 | Days of warning before the deadline and the reminder switch, kept in one Preferences DataStore | `data/Settings.kt`, `domain/Reminders.kt`, `ui/settings/SettingsScreen.kt`, `ui/settings/SettingsViewModel.kt` | Settings (also shown on Deposit deadline) |
+| A4 | Room database: lease, rooms, photos (with time, position and labels) and signed reports | `data/db/Entities.kt`, `data/db/Daos.kt`, `data/db/FianzappDatabase.kt` | Every screen reads it |
+| A5 | Checklist of what to photograph in each room type, from Retrofit or the recorded file, with loading, error and empty states | `data/Checklist.kt`, `data/ChecklistRepository.kt`, `HttpClient.kt`, `ui/checklist/ChecklistScreen.kt`, `ui/checklist/ChecklistViewModel.kt` | Checklist, Add room, Room |
+| A6 | Tenant and landlord sign in with Firebase Auth; the signed report (no photos, signatures as text) goes to Firestore, and the landlord reads it live | `ui/account/AccountViewModel.kt`, `ui/account/AccountViews.kt`, `data/remote/Firestore.kt`, `ui/report/ReportScreen.kt`, `ui/report/ReportViewModel.kt`, `ui/landlord/LandlordScreen.kt`, `firestore.rules` | Report, Landlord |
+| A7 | Daily worker that notifies the warning and the deadline (`depositDeadline` = keys returned + 1 month), each only once | `reminder/DepositReminderWorker.kt`, `domain/DepositDeadline.kt`, `domain/DeadlineStatus.kt`, `domain/Reminders.kt`, `ui/deadline/DeadlineScreen.kt`, `ui/deadline/DeadlineViewModel.kt` | Notification, Settings, Deposit deadline |
+| A8 | Camera permission with its three paths and CameraX; one photo per item and phase, plus damage photos with a note, saved under `filesDir/photos/<roomId>/` | `ui/camera/CameraScreen.kt`, `ui/camera/CameraViewModel.kt` | Camera (from Room) |
+| A9 | Approximate location of each photo, distance from the flat and a warning when it is far | `ui/camera/PhotoSensors.kt`, `ui/camera/CameraViewModel.kt`, `domain/PhotoChecks.kt`, `ui/room/RoomViewModel.kt` | Camera, Room |
+| A10 | ML Kit image labeling (bundled) on each photo; compares the move-in and move-out pair | `ui/camera/PhotoSensors.kt`, `domain/PhotoChecks.kt`, `ui/room/RoomScreen.kt` | Room |
+
+All paths are under `app/src/main/java/com/example/fianzapp/` except `firestore.rules`.
 
 ## Design decisions
 
-Three decisions you took, each with its reason.
-
-1.
-2.
-3.
+1. **The comparison rule (A10).** A pair shows "the same" when both photos share a label with confidence of 0.7 or more, ignoring `Room`, `Wall` and `Monochrome`. If either photo has no such label, the answer is "cannot tell", never "different". Generic labels appear in almost any photo of a flat, so counting them would call every pair "the same". The labeler cannot see damage, so the app never claims something is damaged: it only checks that people compare like with like, and people judge the damage.
+2. **A signed report cannot change.** Once both people sign a phase, the report is read only and `sign` never overwrites it. A report that could be edited after signing would prove nothing to the landlord or in a dispute over the deposit. Photos stay in Room and on the phone; only the report goes to Firestore, because Firebase Storage needs the paid Blaze plan.
+3. **The reminder never repeats (A7).** The worker runs once a day, but WorkManager does not promise the time, and it can run twice. DataStore keeps the deadline for which the warning, and the "deadline reached" notice, were already sent. Each is therefore sent once per deadline, and if the device missed the exact reminder day the next run still sends the warning. "Far from the flat" (A9) is 5 km on purpose, because approximate location can be about 1 km off.
 
 ## Release (C2)
 
-Which key signs your `.aab`, where you keep it outside the repository, and why Google Play does not accept the debug key.
+The `.aab` is signed with a release key created in Android Studio (*Build > Generate Signed Bundle/APK > Android App Bundle > Create new*). The `.jks` file is kept outside the repository by one member, and its passwords are never written in any file or prompt. *(Pending: add which member keeps it and where, once the key exists.)*
+
+Google Play does not accept the debug key because Android Studio creates it automatically on every computer, with a known password and the same "Android Debug" certificate for everyone. It proves nothing about who published the app, and an app signed with it could not be updated later with the same identity. Play requires a private release key that only the developer holds.
 
 Sign it in Android Studio with **Build > Generate Signed Bundle/APK**, then **Android App Bundle**. The `.aab` that Gradle builds on its own in `app/build/outputs` is not signed, and an unsigned `.aab` scores 0 in C2.
 

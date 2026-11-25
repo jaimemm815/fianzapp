@@ -572,3 +572,22 @@ ok, esta creado el proyecto
 ### What happened
 
 pending
+
+## DV-27
+
+- **Date and time:** 2026-11-25 12:20
+- **Author:** Darío Valdemar
+- **Tool:** Claude Code (desktop app; same session as DV-26)
+- **Files touched:** prompts/dario-v.md, README.md
+- **Result:** pending
+- **How I checked it:** pending
+
+### Prompt
+
+```text
+Sí, el README
+```
+
+### What happened
+
+pending
